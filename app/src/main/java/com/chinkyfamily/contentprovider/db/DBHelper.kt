@@ -8,6 +8,9 @@ class DBHelper(private val context : Context , private val factory : SQLiteDatab
     SQLiteOpenHelper(context , DBConstants.DB_NAME , factory , DBConstants.DB_VERSION)
 {
 
+    /**
+     * onConfigure callback method of the
+     * */
     override fun onConfigure(db : SQLiteDatabase?)
     {
         super.onConfigure(db)
