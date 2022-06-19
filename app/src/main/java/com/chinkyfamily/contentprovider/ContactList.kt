@@ -57,23 +57,24 @@ class ContactList : AppCompatActivity()
                 READ_CONTACTS_REQUEST_CODE)
         }
         val resolver : ContentResolver = contentResolver
-        val uri : Uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
+        val phoneUri : Uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
+        val emailUri : Uri = ContactsContract.CommonDataKinds.Email.CONTENT_URI
         val projections = null
         val selections = null
         val selectionArgs = null
         val order = null
         val dataFromContacts = ArrayList<String>()
 
-        val cursor = resolver.query(uri , projections , selections , selectionArgs , order)
+        val cursor = resolver.query(emailUri , projections , selections , selectionArgs , order)
         withContext(Dispatchers.IO) {
             if ((cursor?.count ?: return@withContext) > 0)
             {
                 while (cursor.moveToNext())
                 {
                     val contactName =
-                        cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                        cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.DISPLAY_NAME_PRIMARY))
                     val contactNumber =
-                        cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                        cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.ADDRESS))
                     val fullContactDetails = "$contactName\n$contactNumber "
                     dataFromContacts?.add(fullContactDetails)
                 }
