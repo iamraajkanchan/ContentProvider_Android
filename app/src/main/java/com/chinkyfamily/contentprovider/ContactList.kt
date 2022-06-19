@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.content.ContentResolver
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.chinkyfamily.contentprovider.databinding.ActivityContactListBinding
@@ -20,12 +20,14 @@ class ContactList : AppCompatActivity()
 {
     companion object
     {
+        /**
+         * Request code for Reading contacts from My Contacts.
+         * */
         const val READ_CONTACTS_REQUEST_CODE : Int = 1001
     }
 
     private var _binding : ActivityContactListBinding? = null
     private val binding get() = _binding
-    private var listData : ArrayList<String>? = null
 
     /**
      * onCreate callback method of the Activity
@@ -35,15 +37,12 @@ class ContactList : AppCompatActivity()
         super.onCreate(savedInstanceState)
         _binding = ActivityContactListBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        listData = ArrayList()
         MainScope().launch {
-            val contacts = async { fetchContacts() }
-            listData = contacts.await()
-            println("ContactList :: onCreate :: MainScope :: listData ${listData.toString()}")
+            val listData = withContext(Dispatchers.Default) { fetchContacts() }
+            val contactsAdapter =
+                ArrayAdapter(this@ContactList , android.R.layout.simple_list_item_1 , listData)
+            binding?.listContacts?.adapter = contactsAdapter
         }
-        val contactsAdapter : ArrayAdapter<String> =
-            ArrayAdapter(this , android.R.layout.simple_list_item_1 , listData ?: return)
-        binding?.listContacts?.adapter = contactsAdapter
     }
 
     @SuppressLint("Range")
