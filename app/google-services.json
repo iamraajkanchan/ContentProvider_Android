@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "93709501368",
+    "project_id": "pushdemo-7495a",
+    "storage_bucket": "pushdemo-7495a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93709501368:android:42055fbdddb7909045454d",
+        "android_client_info": {
+          "package_name": "com.chinkyfamily.contentprovider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93709501368-5den1u8tmgk8dmm1usvdfkjtdt6idrtj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBl29qUM3EvpriQAouP2K4PZ1swEUHK3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93709501368-5den1u8tmgk8dmm1usvdfkjtdt6idrtj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
