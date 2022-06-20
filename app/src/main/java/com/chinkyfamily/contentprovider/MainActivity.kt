@@ -29,8 +29,14 @@ class MainActivity : AppCompatActivity()
     override fun onStart()
     {
         super.onStart()
-        binding?.btnContactList?.setOnClickListener {
-            Intent(this , ContactList::class.java).apply {
+        binding?.btnContactListCoroutine?.setOnClickListener {
+            Intent(this , ContactListCoroutine::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(this)
+            }
+        }
+        binding?.btnContactListCursorLoader?.setOnClickListener {
+            Intent(this , ContactListLoader::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(this)
             }

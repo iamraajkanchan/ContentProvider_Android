@@ -16,7 +16,7 @@ import kotlinx.coroutines.*
 /**
  * ContactList
  * */
-class ContactList : AppCompatActivity()
+class ContactListCoroutine : AppCompatActivity()
 {
     companion object
     {
@@ -40,8 +40,9 @@ class ContactList : AppCompatActivity()
         MainScope().launch {
             val listData = withContext(Dispatchers.Default) { fetchContacts() }
             listData.addAll(withContext(Dispatchers.Default) { fetchEmailDetails() })
-            val contactsAdapter =
-                ArrayAdapter(this@ContactList , android.R.layout.simple_list_item_1 , listData)
+            val contactsAdapter = ArrayAdapter(this@ContactListCoroutine ,
+                android.R.layout.simple_list_item_1 ,
+                listData)
             binding?.listContacts?.adapter = contactsAdapter
         }
     }

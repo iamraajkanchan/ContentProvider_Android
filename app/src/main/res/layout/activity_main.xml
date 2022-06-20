@@ -46,13 +46,23 @@
             app:layout_constraintTop_toBottomOf="@+id/edtUserName" />
 
     <Button
-            android:id="@+id/btnContactList"
+            android:id="@+id/btnContactListCoroutine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contact List"
+            android:text="List Coroutine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnContactListCursorLoader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
+
+    <Button
+            android:id="@+id/btnContactListCursorLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List Loader"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnContactListCoroutine"
             app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
