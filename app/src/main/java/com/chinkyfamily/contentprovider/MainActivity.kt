@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity()
                 startActivity(this)
             }
         }
-        binding?.btnContactListCursorLoader?.setOnClickListener {
+        binding?.btnContactWorkManager?.setOnClickListener {
             Intent(this , ContactListLoader::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(this)

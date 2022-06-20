@@ -51,15 +51,15 @@
             android:layout_height="wrap_content"
             android:text="List Coroutine"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnContactListCursorLoader"
+            app:layout_constraintEnd_toStartOf="@+id/btnContactWorkManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
 
     <Button
-            android:id="@+id/btnContactListCursorLoader"
+            android:id="@+id/btnContactWorkManager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="List Loader"
+            android:text="List WorkManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnContactListCoroutine"
