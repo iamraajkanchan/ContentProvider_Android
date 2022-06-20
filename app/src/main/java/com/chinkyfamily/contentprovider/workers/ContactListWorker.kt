@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.chinkyfamily.contentprovider.ContactListWorkManager
@@ -24,13 +25,17 @@ class ContactListWorker(private val wContext : Context , private val worker : Wo
     {
         return try
         {
-            Result.success()
+            val outPutData = Data.Builder().putString("Shared Key" , "Hello WorkManager").build()
+            Result.success(outPutData)
         } catch (e : Exception)
         {
             Result.failure()
         }
     }
 
+    /**
+     * registerCallback couldn't access this method out of ContactListWorker class.
+     * */
     fun registerCallback(contactListInterface : ContactListInterface)
     {
         this.contactListInterface = contactListInterface
@@ -50,6 +55,10 @@ class ContactListWorker(private val wContext : Context , private val worker : Wo
      * */
     inner class ContactListWorkerInstantiate()
     {
+        /**
+         * getInstance method is used to create an instance of ContactListWorker class.
+         * At the moment this is not working.
+         * */
         fun getInstance() : ContactListWorker = ContactListWorker(wContext , worker)
     }
 }
